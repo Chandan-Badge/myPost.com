@@ -13,6 +13,9 @@ app.use(express.static(path.join(__dirname, "public")));  // Enabling the style 
 app.use(express.urlencoded({ extended: true })); // make your 'url' encoded
 app.use(methodOverride("_method"));
 
+// App config
+const port = process.env.PORT || 8000;
+
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/whatsapp");
 }
