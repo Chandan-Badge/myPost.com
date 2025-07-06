@@ -1,7 +1,7 @@
 // Sample data to initilize
 
-import mongoose from "mongoose";
-import Chat from "./models/chat";
+const mongoose = require("mongoose");
+const Chat = require("./models/chat");
 
 main()
     .then(() => console.log("Connection Successful..."))

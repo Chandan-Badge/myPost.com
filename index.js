@@ -1,13 +1,14 @@
-import express from "express";
+const express  = require("express");
 const app = express();
-import path from "path";
+const path =  require("path");
 
-import mongoose from "mongoose";
-import methodOverride from "method-override";
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
-import "dotenv/config";
+const dotenv = require("dotenv");
+dotenv.config();
 
-import Chat from "./models/chat.js"; // ==> Chat model
+const Chat = require("./models/chat.js"); // ==> Chat model
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -17,9 +18,10 @@ app.use(express.urlencoded({ extended: true })); // make your 'url' encoded
 app.use(methodOverride("_method"));
 
 // App config
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8001;
 
 async function main() {
+    console.log("MONGODB_URI:", process.env.MONGODB_URI);
     await mongoose.connect(`${process.env.MONGODB_URI}/mypost`);
 }
 
@@ -101,7 +103,7 @@ app.put("/chats/:id", async (req, res) => {
 })
 
 // Destroy route
-app.delete(("/chats/:id"), async (req, res) => {
+app.delete("/chats/:id", async (req, res) => {
     let { id } = req.params;
 
     let deletedChat = await Chat.findByIdAndDelete(id);
