@@ -1,14 +1,14 @@
 // Sample data to initilize
 
-const mongoose = require("mongoose");
-const Chat = require("./models/chat");
+import mongoose from "mongoose";
+import Chat from "./models/chat";
 
 main()
     .then(() => console.log("Connection Successful..."))
     .catch((err) => console.log(err));
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/whatsapp");
+    await mongoose.connect(`${process.env.MONGODB_URI}/mypost`);
 }
 
 

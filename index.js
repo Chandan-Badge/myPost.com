@@ -1,10 +1,13 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const path = require("path");
+import path from "path";
 
-const mongoose = require("mongoose");
-const Chat = require("./models/chat"); // ==> Chat model
-const methodOverride = require("method-override");
+import mongoose from "mongoose";
+import methodOverride from "method-override";
+
+import "dotenv/config";
+
+import Chat from "./models/chat.js"; // ==> Chat model
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -17,16 +20,16 @@ app.use(methodOverride("_method"));
 const port = process.env.PORT || 8000;
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/whatsapp");
+    await mongoose.connect(`${process.env.MONGODB_URI}/mypost`);
 }
 
 main()
-    .then(() => console.log("Connection Successful"))
+    .then(() => console.log("DB Connection Successful"))
     .catch((error) => console.log(error));
     
 
-app.listen(8080, () => {
-    console.log("Application was listning on port 8080");
+app.listen(port, () => {
+    console.log(`Application was listning on port ${port}`);
 })
 
 app.get("/", (req, res) => {
