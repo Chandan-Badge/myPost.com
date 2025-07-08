@@ -12,7 +12,7 @@
     <p>This chat is send from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
 
     <form action="/chats/<%= chat._id %>/?_method=PUT" method="post">
-        <label for="edit-msg">Edit Message: </label><br>
+        <label class="bold-text" for="edit-msg">Edit Message: </label><br>
         <textarea name="msg" id="edit-msg" placeholder="message" cols="40" rows="10"><%= chat.msg %></textarea>
 
         <br><br>
