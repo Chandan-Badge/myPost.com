@@ -21,7 +21,7 @@ app.use(methodOverride("_method"));
 const port = process.env.PORT || 8001;
 
 async function main() {
-    console.log("MONGODB_URI:", process.env.MONGODB_URI);
+    // console.log("MONGODB_URI:", process.env.MONGODB_URI);
     await mongoose.connect(`${process.env.MONGODB_URI}/mypost`);
 }
 
