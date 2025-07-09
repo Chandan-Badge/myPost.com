@@ -36,7 +36,7 @@ app.listen(port, () => {
 
 app.get("/", (req, res) => {
     // res.send("Working properly.");
-    res.render("Home.ejs");
+    res.render("home.ejs");
 })
 
 // Chat.insertMany([
